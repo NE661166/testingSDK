@@ -32,7 +32,10 @@
     "react-test-renderer": "16.11.0"
   },
   "peerDependencies": {
-    "react-native-sha256": "1.2.3"
+    "react-native-sha256": "1.2.3",
+    "axios": "0.18.0",
+    "query-string": "6.1.0",
+    "lodash": "4.17.11"
   },
   "jest": {
     "preset": "react-native"
