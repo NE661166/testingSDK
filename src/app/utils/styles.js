@@ -1,5 +1,4 @@
 import {Platform, Dimensions, StyleSheet} from 'react-native';
-import {TabBarBottom} from 'react-navigation';
 
 export const {width, height} = Dimensions.get('window');
 const guidelineBaseWidth = 320;
@@ -110,27 +109,6 @@ export const loginInputItemStyle = {
   marginRight: scale(10),
   paddingTop: 30,
 };
-
-export const getTabOptions = initialRouteName => ({
-  initialRouteName,
-  tabBarComponent: TabBarBottom,
-  tabBarPosition: 'bottom',
-  swipeEnabled: false,
-  animationEnabled: false,
-  lazyLoad: true,
-  tabBarOptions: {
-    showIcon: true,
-    activeTintColor: color.primary,
-    inactiveTintColor: color.dark.text.hint,
-    labelStyle: {fontSize: 10, margin: 0},
-    style: {
-      backgroundColor: 'white',
-    },
-    indicatorStyle: {
-      backgroundColor: 'transparent',
-    },
-  },
-});
 
 export default {
   footerHeight: 44,
