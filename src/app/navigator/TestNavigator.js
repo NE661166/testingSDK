@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import ViewA from '../views/ViewA';
 import ViewB from '../views/ViewB';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -8,15 +8,33 @@ import DashboardScreen from 'testapp/src/app/screens/DashboardScreen';
 
 const Stack = createStackNavigator();
 
-export const TestNavigator = () => {
-  return (
-    <Stack.Navigator
-      initialRouteName="Login"
-      screenOptions={{gestureEnabled: false}}>
-      <Stack.Screen name="A" component={ViewA} options={{title: 'A'}} />
-      <Stack.Screen name="B" component={ViewB} initialParams={{user: 'B'}} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Dashboard" component={DashboardScreen} />
-    </Stack.Navigator>
-  );
-};
+// export const TestNavigator = () => {
+//   // export default class TestNavigator() {
+//   return (
+//     <Stack.Navigator
+//       initialRouteName="Login"
+//       screenOptions={{gestureEnabled: false}}>
+//       <Stack.Screen name="A" component={ViewA} options={{title: 'A'}} />
+//       <Stack.Screen name="B" component={ViewB} initialParams={{user: 'B'}} />
+//       <Stack.Screen name="Login" component={LoginScreen} />
+//       <Stack.Screen name="Dashboard" component={DashboardScreen} />
+//     </Stack.Navigator>
+//   );
+// };
+
+class TestNavigator extends PureComponent {
+  render() {
+    return (
+      <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{gestureEnabled: false}}>
+        <Stack.Screen name="A" component={ViewA} options={{title: 'A'}} />
+        <Stack.Screen name="B" component={ViewB} initialParams={{user: 'B'}} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+      </Stack.Navigator>
+    );
+  }
+}
+
+export default TestNavigator;
