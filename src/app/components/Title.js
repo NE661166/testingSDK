@@ -3,19 +3,16 @@ import {WhiteSpace} from '@ant-design/react-native';
 import {scale} from '../utils/styles';
 import Text from './Text';
 import View from './View';
-import {sentenceCap} from '../utils/string';
 
 type Props = {
   value?: Object,
   noPadding?: boolean,
-  iconVisible?: boolean,
   onPress?: Function,
   noBold?: boolean,
   lineHeight?: Number,
   size?: string,
   color?: string,
   paddingHorizontal?: Number,
-  removeSentenceCap?: Boolean,
 };
 
 const getPaddingHorizontal = (noPadding, paddingHorizontal) => {
@@ -35,7 +32,6 @@ class Title extends PureComponent<Props> {
       noBold,
       color,
       size,
-      removeSentenceCap,
       value,
       lineHeight,
     } = this.props;
@@ -47,7 +43,7 @@ class Title extends PureComponent<Props> {
             weight={noBold ? 'normal' : 'bold'}
             size={size || 'xl'}
             color={color || 'dark.text.primary'}>
-            {removeSentenceCap ? value : sentenceCap(value)}
+            {value}
           </Text>
         </View>
         <WhiteSpace size="sm" />

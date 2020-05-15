@@ -1,7 +1,7 @@
 import View from './View';
 import Title from './Title';
 import Text from './Text';
-import Button from './Button';
-import Touchable from './Touchable';
+import Spinner from './Spinner';
+import Modal from './Modal';
 
-export {View, Title, Text, Button, Touchable};
+export {View, Title, Text, Spinner, Modal};

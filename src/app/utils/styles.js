@@ -27,23 +27,6 @@ const size = {
     l: scale(16),
     xl: scale(20),
   },
-  icon: {
-    xxxxxxs: 9,
-    xxxxxs: 10,
-    xxxxs: 11,
-    xxxs: 12,
-    xxs: 13,
-    xs: 14,
-    s: 15,
-    m: 16,
-    l: 17,
-    xl: 18,
-    xxl: 19,
-    xxxl: 20,
-    xxxxl: 21,
-    xxxxxl: 22,
-    xxxxxxl: 23,
-  },
 };
 
 const color = {

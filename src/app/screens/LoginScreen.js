@@ -7,43 +7,41 @@ export default class LoginScreen extends Component {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
+      username: '670916106191',
+      password: 'Ifast123!',
     };
   }
 
   onLogin() {
-    this.props.navigation.navigate('Dashboard');
+    const {password, username} = this.state;
 
-    // const {password, username} = this.state;
-
-    // sha256(password).then(hash => {
-    //   fetch(
-    //     'https://eibtest.southeastasia.cloudapp.azure.com/clientws/oauth/login',
-    //     {
-    //       method: 'POST',
-    //       headers: {
-    //         Accept: 'application/json',
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({
-    //         password: hash,
-    //         username,
-    //       }),
-    //     },
-    //   )
-    //     .then(response => response.json())
-    //     .then(json => {
-    //       if (json.success) {
-    //         this.props.navigation.navigate('Dashboard', {
-    //           accessToken: json.data.access_token,
-    //         });
-    //       }
-    //     })
-    //     .catch(error => {
-    //       console.error(error);
-    //     });
-    // });
+    sha256(password).then(hash => {
+      fetch(
+        'https://eibtest.southeastasia.cloudapp.azure.com/clientws/oauth/login',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            password: hash,
+            username,
+          }),
+        },
+      )
+        .then(response => response.json())
+        .then(json => {
+          if (json.success) {
+            this.props.navigation.navigate('Dashboard', {
+              accessToken: json.data.access_token,
+            });
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    });
   }
 
   render() {
