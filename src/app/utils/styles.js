@@ -1,4 +1,7 @@
 import {Platform, Dimensions, StyleSheet} from 'react-native';
+import {css} from 'styled-components/native';
+import get from 'lodash/get';
+import isFunction from 'lodash/isFunction';
 
 export const {width, height} = Dimensions.get('window');
 const guidelineBaseWidth = 320;
@@ -131,3 +134,108 @@ export const masterStyles = StyleSheet.create({
     backgroundColor: color.greyMid,
   },
 });
+
+const resolveDefaultValue = (props, defaultValue) => {
+  if (isFunction(defaultValue)) {
+    return defaultValue(props);
+  }
+  return defaultValue;
+};
+
+const styledIf = (method, condition) => (...names) => (
+  styledFn,
+  ...rest
+) => props =>
+  names[method](name => Boolean(props[name]) === condition) &&
+  css(styledFn, ...rest);
+
+const is = styledIf('every', true);
+const isNot = styledIf('every', false);
+const isOr = styledIf('some', true);
+const isSomeNot = styledIf('some', false);
+
+const styledBy = (prop, {cssProp, defaultValue} = {}) => props =>
+  `${cssProp || prop}: ${props[prop] ||
+    resolveDefaultValue(props, defaultValue)}`;
+
+const isStyledBy = (prop, {cssProp, defaultValue} = {}) => props =>
+  (!!props[prop] || defaultValue !== undefined) &&
+  css`
+    ${styledBy(prop, {
+      cssProp,
+      defaultValue: resolveDefaultValue(props, defaultValue),
+    })};
+  `;
+
+const isStyledThemeBy = (
+  prop,
+  {cssProp = prop, at, defaultValue} = {},
+) => props => {
+  const themeAt = at ? `theme.${at}.${props[prop]}` : `theme.${props[prop]}`;
+  return get(props, themeAt)
+    ? css`
+        ${cssProp}: ${get(props, themeAt)};
+      `
+    : isStyledBy(prop, {
+        cssProp,
+        defaultValue: resolveDefaultValue(props, defaultValue),
+      });
+};
+
+const isStyledPadding = () => css`
+  ${isStyledBy('padding')};
+  ${isStyledBy('paddingHorizontal', {cssProp: 'padding-left'})};
+  ${isStyledBy('paddingHorizontal', {cssProp: 'padding-right'})};
+  ${isStyledBy('paddingVertical', {cssProp: 'padding-top'})};
+  ${isStyledBy('paddingVertical', {cssProp: 'padding-bottom'})};
+  ${isStyledBy('paddingLeft', {cssProp: 'padding-left'})};
+  ${isStyledBy('paddingRight', {cssProp: 'padding-right'})};
+  ${isStyledBy('paddingTop', {cssProp: 'padding-top'})};
+  ${isStyledBy('paddingBottom', {cssProp: 'padding-bottom'})};
+`;
+
+const paddingProps = [
+  'padding',
+  'paddingHorizontal',
+  'paddingVertical',
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
+  'paddingBottom',
+];
+
+const marginProps = [
+  'margin',
+  'marginHorizontal',
+  'marginVertical',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'marginBottom',
+];
+
+const isStyledMargin = () => css`
+  ${isStyledBy('margin')};
+  ${isStyledBy('marginHorizontal', {cssProp: 'margin-left'})};
+  ${isStyledBy('marginHorizontal', {cssProp: 'margin-right'})};
+  ${isStyledBy('marginVertical', {cssProp: 'margin-top'})};
+  ${isStyledBy('marginVertical', {cssProp: 'margin-bottom'})};
+  ${isStyledBy('marginLeft', {cssProp: 'margin-left'})};
+  ${isStyledBy('marginRight', {cssProp: 'margin-right'})};
+  ${isStyledBy('marginTop', {cssProp: 'margin-top'})};
+  ${isStyledBy('marginBottom', {cssProp: 'margin-bottom'})};
+`;
+
+export {
+  is,
+  isNot,
+  isOr,
+  isSomeNot,
+  styledBy,
+  isStyledBy,
+  isStyledThemeBy,
+  isStyledPadding,
+  paddingProps,
+  isStyledMargin,
+  marginProps,
+};
