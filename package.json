@@ -1,74 +1,30 @@
 {
-  "_from": "git+https://github.com/NE661166/testingSDK.git",
-  "_id": "testapp@0.0.1",
-  "_inBundle": false,
-  "_integrity": "",
-  "_location": "/testapp",
-  "_phantomChildren": {
-    "decode-uri-component": "0.2.0",
-    "strict-uri-encode": "2.0.0"
-  },
-  "_requested": {
-    "type": "git",
-    "raw": "testapp@git+https://github.com/NE661166/testingSDK.git",
-    "name": "testapp",
-    "escapedName": "testapp",
-    "rawSpec": "git+https://github.com/NE661166/testingSDK.git",
-    "saveSpec": "git+https://github.com/NE661166/testingSDK.git",
-    "fetchSpec": "https://github.com/NE661166/testingSDK.git",
-    "gitCommittish": null
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "git+https://github.com/NE661166/testingSDK.git#6d2d35906a9c6e65ba0a96752f3aa9799da5f109",
-  "_spec": "testapp@git+https://github.com/NE661166/testingSDK.git",
-  "_where": "/Users/evon.ng/Desktop/sample",
-  "bundleDependencies": false,
-  "dependencies": {
-    "@react-native-community/masked-view": "^0.1.10",
-    "@react-navigation/bottom-tabs": "^5.4.2",
-    "@react-navigation/native": "^5.3.0",
-    "@react-navigation/stack": "^5.3.2",
-    "react": "16.11.0",
-    "react-native": "0.62.2",
-    "react-native-gesture-handler": "^1.6.1",
-    "react-native-safe-area-context": "^1.0.0",
-    "react-native-screens": "^2.7.0",
-    "@ant-design/react-native": "3.1.15",
-    "react-native-sha256": "1.2.3",
-    "react-native-modal-wrapper": "git+https://github.com/sckoh/react-native-modal-wrapper.git#fix-prop-types",
-    "lodash": "4.17.11"
-  },
-  "deprecated": false,
-  "description": "Add in Podfile: ``` pod 'RNSha256', :path => '../node_modules/react-native-sha256' ```",
-  "devDependencies": {
-    "@babel/core": "7.9.6",
-    "@babel/runtime": "7.9.6",
-    "@react-native-community/eslint-config": "0.0.5",
-    "babel-jest": "24.9.0",
-    "eslint": "6.8.0",
-    "jest": "24.9.0",
-    "metro-react-native-babel-preset": "0.58.0",
-    "react-test-renderer": "16.11.0"
-  },
-  "jest": {
-    "preset": "react-native"
-  },
   "name": "testapp",
-  "peerDependencies": {
-    "@ant-design/react-native": "3.1.15",
-    "react-native-sha256": "1.2.3",
-    "react-native-modal-wrapper": "git+https://github.com/sckoh/react-native-modal-wrapper.git#fix-prop-types",
-    "lodash": "4.17.11"
-  },
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ."
   },
-  "version": "0.0.1"
+  "dependencies": {
+    "react": "16.8.6",
+    "react-native": "0.60.5",
+    "react-navigation": "2.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.5",
+    "@babel/runtime": "7.5.5",
+    "@react-native-community/eslint-config": "0.0.5",
+    "babel-jest": "24.8.0",
+    "eslint": "6.1.0",
+    "jest": "24.8.0",
+    "metro-react-native-babel-preset": "0.56.0",
+    "react-test-renderer": "16.8.6"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
 }

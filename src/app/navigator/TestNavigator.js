@@ -1,25 +1,24 @@
-import React, {PureComponent} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import LoginScreen from 'testapp/src/app/screens/LoginScreen';
-import DashboardScreen from 'testapp/src/app/screens/DashboardScreen';
-import NavigationHeader from 'testapp/src/app/components/NavigationHeader';
+import React from 'react';
+import {StyleSheet, View, Text, Button} from 'react-native';
+// import ViewA from '../views/ViewA';
+// import ViewB from '../views/ViewB';
+// import {createStackNavigator} from '@react-navigation/stack';
+// authentication views
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 
-class TestNavigator extends PureComponent {
-  render() {
-    return (
-      <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{
-          gestureEnabled: false,
-          header: () => <NavigationHeader />,
-        }}>
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Dashboard" component={DashboardScreen} />
-      </Stack.Navigator>
-    );
-  }
+export const TestNavigator = () => {
+  return (
+    // <Stack.Navigator
+    //   initialRouteName="A"
+    //   screenOptions={{gestureEnabled: false}}>
+    //   <Stack.Screen name="A" component={ViewA} options={{title: 'A'}} />
+    //   <Stack.Screen name="B" component={ViewB} initialParams={{user: 'B'}} />
+    // </Stack.Navigator>
+    <View>
+      <Text>AAA AAA AAA</Text>
+      <Text>BBB BBB BBB</Text>
+      <Text>CCC CCC CCC</Text>
+    </View>
+  );
 }
-
-export default TestNavigator;
