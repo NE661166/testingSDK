@@ -1,24 +1,49 @@
 import React from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
-// import ViewA from '../views/ViewA';
-// import ViewB from '../views/ViewB';
-// import {createStackNavigator} from '@react-navigation/stack';
-// authentication views
+// import {View, Text, Button} from 'react-native';
+import {createStackNavigator} from 'react-navigation';
+import NavigationHeader from 'testapp/src/app/components/NavigationHeader';
+import LoginScreen from 'testapp/src/app/screens/LoginScreen';
+import DashboardScreen from 'testapp/src/app/screens/DashboardScreen';
 
-// const Stack = createStackNavigator();
+// class HomeScreen extends React.Component {
+//   render() {
+//     return (
+//       <View>
+//         <Text>Home Screen</Text>
+//         <Button
+//           title="Go to Details"
+//           onPress={() => this.props.navigation.navigate('Details')}
+//           color="#841584"
+//         />
+//       </View>
+//     );
+//   }
+// }
+
+// class DetailsScreen extends React.Component {
+//   render() {
+//     return (
+//       <View>
+//         <Text>Details Screen</Text>
+//       </View>
+//     );
+//   }
+// }
+
+const RootStack = createStackNavigator(
+  {
+    Login: LoginScreen,
+    Dashboard: DashboardScreen,
+  },
+  {
+    initialRouteName: 'Login',
+    navigationOptions: {
+      gestureEnabled: false,
+      header: () => <NavigationHeader />,
+    },
+  },
+);
 
 export const TestNavigator = () => {
-  return (
-    // <Stack.Navigator
-    //   initialRouteName="A"
-    //   screenOptions={{gestureEnabled: false}}>
-    //   <Stack.Screen name="A" component={ViewA} options={{title: 'A'}} />
-    //   <Stack.Screen name="B" component={ViewB} initialParams={{user: 'B'}} />
-    // </Stack.Navigator>
-    <View>
-      <Text>AAA AAA AAA</Text>
-      <Text>BBB BBB BBB</Text>
-      <Text>CCC CCC CCC</Text>
-    </View>
-  );
-}
+  return <RootStack />;
+};
